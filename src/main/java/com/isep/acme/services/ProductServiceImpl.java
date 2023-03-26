@@ -2,6 +2,7 @@ package com.isep.acme.services;
 
 import com.isep.acme.dto.ProductDTO;
 import com.isep.acme.dto.ProductDetailDTO;
+import com.isep.acme.dto.mapper.ProductMapper;
 import com.isep.acme.model.Product;
 import com.isep.acme.repositories.ProductRepository;
 
@@ -31,16 +32,16 @@ public class ProductServiceImpl implements ProductService {
         if( product.isEmpty() )
             return Optional.empty();
         else
-            return Optional.of( product.get().toDto() );
+            return Optional.of(ProductMapper.toDto(product.get()));
     }
 
 
     @Override
     public Iterable<ProductDTO> findByDesignation(final String designation) {
         Iterable<Product> p = repository.findByDesignation(designation);
-        List<ProductDTO> pDto = new ArrayList();
+        List<ProductDTO> pDto = new ArrayList<>();
         for (Product pd:p) {
-            pDto.add(pd.toDto());
+            pDto.add(ProductMapper.toDto(pd));
         }
 
         return pDto;
@@ -49,9 +50,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Iterable<ProductDTO> getCatalog() {
         Iterable<Product> p = repository.findAll();
-        List<ProductDTO> pDto = new ArrayList();
+        List<ProductDTO> pDto = new ArrayList<>();
         for (Product pd:p) {
-            pDto.add(pd.toDto());
+            pDto.add(ProductMapper.toDto(pd));
         }
 
         return pDto;
@@ -72,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO create(final Product product) {
         final Product p = new Product(product.getSku(), product.getDesignation(), product.getDescription());
 
-        return repository.save(p).toDto();
+        return ProductMapper.toDto(repository.save(p));
     }
 
     @Override
@@ -86,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
 
         Product productUpdated = repository.save(productToUpdate.get());
         
-        return productUpdated.toDto();
+        return ProductMapper.toDto(productUpdated);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class UploadFileResponse {
 
     public UploadFileResponse(String fileName, String fileDownloadUri, String fileType, long size) {
         this.fileName = fileName;
-        this.fileDownloadUri = fileDownloadUri;
+        UploadFileResponse.fileDownloadUri = fileDownloadUri;
         this.fileType = fileType;
         this.size = size;
     }
@@ -30,7 +30,7 @@ public class UploadFileResponse {
     }
 
     public void setFileDownloadUri(String fileDownloadUri) {
-        this.fileDownloadUri = fileDownloadUri;
+        UploadFileResponse.fileDownloadUri = fileDownloadUri;
     }
 
     public String getFileType() {
