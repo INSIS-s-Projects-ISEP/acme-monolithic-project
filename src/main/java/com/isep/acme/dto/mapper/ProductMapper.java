@@ -1,7 +1,7 @@
 package com.isep.acme.dto.mapper;
 
+import com.isep.acme.domain.model.Product;
 import com.isep.acme.dto.ProductDTO;
-import com.isep.acme.model.Product;
 
 public class ProductMapper {
 

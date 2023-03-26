@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.isep.acme.model.Product;
-import com.isep.acme.repositories.ProductRepository;
+import com.isep.acme.domain.model.Product;
+import com.isep.acme.domain.repositories.ProductRepository;
 
 @Component
 //@Profile("bootstrap")

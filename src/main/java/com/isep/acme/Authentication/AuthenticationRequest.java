@@ -1,4 +1,4 @@
-package com.isep.acme.Authentication;
+package com.isep.acme.authentication;
 
 import lombok.Data;
 

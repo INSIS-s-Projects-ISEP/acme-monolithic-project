@@ -1,4 +1,4 @@
-package com.isep.acme.Authentication;
+package com.isep.acme.authentication;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.isep.acme.model.User;
-import com.isep.acme.view.UserView;
-import com.isep.acme.view.mapper.UserViewMapper;
+import com.isep.acme.domain.model.User;
+import com.isep.acme.domain.view.UserView;
+import com.isep.acme.domain.view.mapper.UserViewMapper;
 
 import javax.validation.Valid;
 import java.time.Instant;
