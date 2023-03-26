@@ -141,7 +141,7 @@ public class ReviewServiceImpl implements ReviewService {
         }
         Review r = rev.get();
 
-        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
+        if (r.getUpVotes().isEmpty() && r.getDownVotes().isEmpty()) {
             repository.delete(r);
             return true;
         }

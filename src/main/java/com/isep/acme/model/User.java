@@ -1,16 +1,28 @@
 package com.isep.acme.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import java.util.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
@@ -19,53 +31,34 @@ public class User implements UserDetails {
     @GeneratedValue
     private Long userId;
 
-    @Column(unique = true)
     @Email
+    @Column(unique = true)
     private String username;
-
     private String password;
-
     private String fullName;
 
     @ElementCollection
     private Set<Role> authorities = new HashSet<>();
 
-    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(min = 9, max = 9, message = "NIF must be 9 characters.")
+    @Column(unique = true)
     private String nif;
-
-    @Column(nullable = false)
+    
+    @NotBlank
     private String morada;
 
-/*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Review> review = new ArrayList<Review>(); */
-
-    protected User() {}
-
-    public User(final String username, final String password){
-        this.username = username;
-        this.password = password;
-    }
-
-
-    public User(final String username, final String password, final String fullName, final String nif, final String morada) {
+    public User(String username, String password, String fullName, String nif, String morada){
         this.username = username;
         this.password = password;
         this.fullName = fullName;
-        setNif(nif);
         this.morada = morada;
+        setNif(nif);
     }
 
-    public void addAuthority(Role r) {
-        authorities.add(r);
+    public void addAuthority(Role role) {
+        authorities.add(role);
     }
-
-    public void setNif(String nif) {
-        if(nif.length() != 9) {
-            throw new IllegalArgumentException("NIF must be 9 characters.");
-        }
-        this.nif = nif;
-    }
-
 
     @Override
     public boolean isAccountNonExpired() {

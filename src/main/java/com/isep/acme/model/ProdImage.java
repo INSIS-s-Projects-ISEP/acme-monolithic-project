@@ -43,7 +43,7 @@ public ProdImage( Product product, Resource image){
 
 
     public ImageDTO toDto() {
-        return new ImageDTO(this.id, product.getProductID());
+        return new ImageDTO(this.id, product.getProductId());
     }
 
 /*
