@@ -1,4 +1,4 @@
-package com.isep.acme.services;
+package com.isep.acme.services.impl;
 
 import com.isep.acme.controllers.ResourceNotFoundException;
 import com.isep.acme.dto.CreateReviewDTO;
@@ -16,6 +16,10 @@ import com.isep.acme.model.*;
 import com.isep.acme.repositories.ReviewRepository;
 import com.isep.acme.repositories.ProductRepository;
 import com.isep.acme.repositories.UserRepository;
+import com.isep.acme.services.RatingService;
+import com.isep.acme.services.RestService;
+import com.isep.acme.services.ReviewService;
+import com.isep.acme.services.UserService;
 
 import java.time.LocalDate;
 import java.util.List;

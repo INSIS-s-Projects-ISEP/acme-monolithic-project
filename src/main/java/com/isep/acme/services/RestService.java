@@ -1,21 +1,19 @@
 package com.isep.acme.services;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
 
-/* Code based on following tutorial https://attacomsian.com/blog/http-requests-resttemplate-spring-boot */
+// Code based on following tutorial https://attacomsian.com/blog/http-requests-resttemplate-spring-boot
 
 @Service
+@AllArgsConstructor
 public class RestService {
 
     private final RestTemplate restTemplate;
-
-    public RestService(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
-    }
 
     public String getFunFact(LocalDate date) {
         String url = "http://numbersapi.com/{month}/{day}/date";
