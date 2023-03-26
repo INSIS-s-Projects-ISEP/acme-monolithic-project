@@ -2,6 +2,7 @@ package com.isep.acme.domain.services;
 
 import java.time.LocalDate;
 
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

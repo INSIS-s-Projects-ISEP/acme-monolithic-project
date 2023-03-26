@@ -1,21 +1,20 @@
 package com.isep.acme.domain.repositories;
 
+import java.util.Optional;
+
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.isep.acme.api.controllers.ResourceNotFoundException;
 import com.isep.acme.domain.model.User;
 
-import java.util.Optional;
-
 @Repository
 @CacheConfig(cacheNames = "users")
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     @Override
     @Caching(evict = {
