@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.beans.BeanUtils;
 
+import com.isep.acme.dto.ProductDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

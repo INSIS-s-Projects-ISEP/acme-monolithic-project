@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import com.isep.acme.dto.CreateReviewDTO;
+import com.isep.acme.dto.ReviewDTO;
+import com.isep.acme.dto.VoteReviewDTO;
 import com.isep.acme.model.*;
 import com.isep.acme.services.ReviewService;
 

@@ -2,9 +2,9 @@ package com.isep.acme.services;
 
 import java.util.Optional;
 
+import com.isep.acme.dto.ProductDTO;
+import com.isep.acme.dto.ProductDetailDTO;
 import com.isep.acme.model.Product;
-import com.isep.acme.model.ProductDTO;
-import com.isep.acme.model.ProductDetailDTO;
 
 public interface ProductService {
 

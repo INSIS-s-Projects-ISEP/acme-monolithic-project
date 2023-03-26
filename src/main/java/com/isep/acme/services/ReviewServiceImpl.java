@@ -1,6 +1,11 @@
 package com.isep.acme.services;
 
 import com.isep.acme.controllers.ResourceNotFoundException;
+import com.isep.acme.dto.CreateReviewDTO;
+import com.isep.acme.dto.ReviewDTO;
+import com.isep.acme.dto.VoteReviewDTO;
+import com.isep.acme.dto.mapper.ReviewMapper;
+
 import java.lang.IllegalArgumentException;
 
 import org.springframework.beans.factory.annotation.Autowired;

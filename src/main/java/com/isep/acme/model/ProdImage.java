@@ -3,6 +3,8 @@ package com.isep.acme.model;
 import javax.annotation.Resource;
 import javax.persistence.*;
 
+import com.isep.acme.dto.ImageDTO;
+
 @Entity
 public class ProdImage {
 

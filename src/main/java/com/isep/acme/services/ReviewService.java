@@ -2,6 +2,9 @@ package com.isep.acme.services;
 
 import java.util.List;
 
+import com.isep.acme.dto.CreateReviewDTO;
+import com.isep.acme.dto.ReviewDTO;
+import com.isep.acme.dto.VoteReviewDTO;
 import com.isep.acme.model.*;
 
 public interface ReviewService {

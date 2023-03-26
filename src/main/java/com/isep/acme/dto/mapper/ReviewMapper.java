@@ -1,7 +1,10 @@
-package com.isep.acme.model;
+package com.isep.acme.dto.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.isep.acme.dto.ReviewDTO;
+import com.isep.acme.model.Review;
 
 public class ReviewMapper {
 
