@@ -24,6 +24,7 @@ public class Review {
     private long version;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private ApprovalStatus approvalStatus = ApprovalStatus.PENDING;
 
     @NotNull(message = "Review Text is a mandatory attribute of Review.")
@@ -58,20 +59,20 @@ public class Review {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private Rating rating = new Rating(0.0);
+    @NotNull
+    private Double rate;
 
-    public Review(String reviewText, LocalDate publishingDate, Product product, String funFact, Rating rating, User user) {
-        setReviewText(reviewText);
-        setProduct(product);
-        setPublishingDate(publishingDate);
-        setFunFact(funFact);
-        setRating(rating);
-        setUser(user);
+    public Review(String reviewText, LocalDate publishingDate, Product product, String funFact, Double rate, User user) {
+        this.setReviewText(reviewText);
+        this.setProduct(product);
+        this.setPublishingDate(publishingDate);
+        this.setFunFact(funFact);
+        this.setRate(rate);
+        this.setUser(user);
     }
 
     public void setApprovalStatus(ApprovalStatus approvalStatus) {
-        this.approvalStatus = approvalStatus;        
+        this.approvalStatus = approvalStatus;
     }
 
     public boolean addUpVote(Vote upVote) {
@@ -82,9 +83,9 @@ public class Review {
         upVotes.add(upVote);
         return true;
     }
-    
+
     public boolean addDownVote(Vote downVote) {
-        
+
         if(!approvalStatus.equals(ApprovalStatus.APPROVED)){
             return false;
         }
