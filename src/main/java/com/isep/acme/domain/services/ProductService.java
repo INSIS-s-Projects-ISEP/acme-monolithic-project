@@ -18,7 +18,7 @@ public interface ProductService {
 
     ProductDetailDTO getDetails(final String sku);
 
-    ProductDTO create(final Product manager);
+    Product create(Product product);
 
     ProductDTO updateBySku(final String sku, final Product product);
 

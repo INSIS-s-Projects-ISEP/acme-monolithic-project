@@ -1,5 +1,11 @@
 package com.isep.acme.domain.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.isep.acme.domain.model.Product;
 import com.isep.acme.domain.repositories.ProductRepository;
 import com.isep.acme.domain.services.ProductService;
@@ -7,28 +13,23 @@ import com.isep.acme.dto.ProductDTO;
 import com.isep.acme.dto.ProductDetailDTO;
 import com.isep.acme.dto.mapper.ProductMapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository repository;
+    private final ProductRepository productRepository;
 
     @Override
     public Optional<Product> getProductBySku( final String sku ) {
 
-        return repository.findBySku(sku);
+        return productRepository.findBySku(sku);
     }
 
     @Override
     public Optional<ProductDTO> findBySku(String sku) {
-        final Optional<Product> product = repository.findBySku(sku);
+        final Optional<Product> product = productRepository.findBySku(sku);
 
         if( product.isEmpty() )
             return Optional.empty();
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Iterable<ProductDTO> findByDesignation(final String designation) {
-        Iterable<Product> p = repository.findByDesignation(designation);
+        Iterable<Product> p = productRepository.findByDesignation(designation);
         List<ProductDTO> pDto = new ArrayList<>();
         for (Product pd:p) {
             pDto.add(ProductMapper.toDto(pd));
@@ -50,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Iterable<ProductDTO> getCatalog() {
-        Iterable<Product> p = repository.findAll();
+        Iterable<Product> p = productRepository.findAll();
         List<ProductDTO> pDto = new ArrayList<>();
         for (Product pd:p) {
             pDto.add(ProductMapper.toDto(pd));
@@ -61,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
     public ProductDetailDTO getDetails(String sku) {
 
-        Optional<Product> p = repository.findBySku(sku);
+        Optional<Product> p = productRepository.findBySku(sku);
 
         if (p.isEmpty())
             return null;
@@ -71,28 +72,26 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public ProductDTO create(final Product product) {
-        final Product p = new Product(product.getSku(), product.getDesignation(), product.getDescription());
-
-        return ProductMapper.toDto(repository.save(p));
+    public Product create(Product product){
+        return productRepository.save(product);
     }
 
     @Override
     public ProductDTO updateBySku(String sku, Product product) {
         
-        final Optional<Product> productToUpdate = repository.findBySku(sku);
+        final Optional<Product> productToUpdate = productRepository.findBySku(sku);
 
         if( productToUpdate.isEmpty() ) return null;
 
         productToUpdate.get().updateProduct(product);
 
-        Product productUpdated = repository.save(productToUpdate.get());
+        Product productUpdated = productRepository.save(productToUpdate.get());
         
         return ProductMapper.toDto(productUpdated);
     }
 
     @Override
     public void deleteBySku(String sku) {
-        repository.deleteBySku(sku);
+        productRepository.deleteBySku(sku);
     }
 }
