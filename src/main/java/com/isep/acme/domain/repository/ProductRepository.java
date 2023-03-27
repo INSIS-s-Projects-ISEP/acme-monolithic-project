@@ -1,4 +1,4 @@
-package com.isep.acme.domain.repositories;
+package com.isep.acme.domain.repository;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

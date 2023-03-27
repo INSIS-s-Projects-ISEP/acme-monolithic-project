@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.isep.acme.domain.model.Product;
-import com.isep.acme.domain.repositories.ProductRepository;
+import com.isep.acme.domain.repository.ProductRepository;
 import com.isep.acme.domain.services.ProductService;
 
 import lombok.AllArgsConstructor;

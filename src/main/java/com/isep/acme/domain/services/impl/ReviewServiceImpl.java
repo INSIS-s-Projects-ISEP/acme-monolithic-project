@@ -2,9 +2,9 @@ package com.isep.acme.domain.services.impl;
 
 import com.isep.acme.api.controllers.ResourceNotFoundException;
 import com.isep.acme.domain.model.*;
-import com.isep.acme.domain.repositories.ProductRepository;
-import com.isep.acme.domain.repositories.ReviewRepository;
-import com.isep.acme.domain.repositories.UserRepository;
+import com.isep.acme.domain.repository.ProductRepository;
+import com.isep.acme.domain.repository.ReviewRepository;
+import com.isep.acme.domain.repository.UserRepository;
 import com.isep.acme.domain.services.RatingService;
 import com.isep.acme.domain.services.RestService;
 import com.isep.acme.domain.services.ReviewService;

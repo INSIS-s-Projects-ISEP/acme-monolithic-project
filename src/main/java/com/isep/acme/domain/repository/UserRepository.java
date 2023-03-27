@@ -1,4 +1,4 @@
-package com.isep.acme.domain.repositories;
+package com.isep.acme.domain.repository;
 
 import java.util.Optional;
 

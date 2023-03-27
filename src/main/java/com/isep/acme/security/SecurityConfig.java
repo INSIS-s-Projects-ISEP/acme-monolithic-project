@@ -1,7 +1,7 @@
 package com.isep.acme.security;
 
 import com.isep.acme.domain.model.Role;
-import com.isep.acme.domain.repositories.UserRepository;
+import com.isep.acme.domain.repository.UserRepository;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
