@@ -3,24 +3,16 @@ package com.isep.acme.domain.services;
 import java.util.Optional;
 
 import com.isep.acme.domain.model.Product;
-import com.isep.acme.dto.ProductDTO;
-import com.isep.acme.dto.ProductDetailDTO;
 
 public interface ProductService {
 
-    Optional<ProductDTO> findBySku(final String sku);
-
-    Optional<Product> getProductBySku( final String sku );
-
-    Iterable<ProductDTO> findByDesignation(final String designation);
-
-    Iterable<ProductDTO> getCatalog();
-
-    ProductDetailDTO getDetails(final String sku);
-
     Product create(Product product);
 
-    ProductDTO updateBySku(final String sku, final Product product);
-
+    Iterable<Product> getCatalog();
+    Optional<Product> findBySku(String sku);
+    Iterable<Product> findByDesignation(String designation);
+    
+    Product updateBySku(String sku, Product product);
     void deleteBySku(final String sku);
+
 }
