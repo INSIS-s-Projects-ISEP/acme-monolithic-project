@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.isep.acme.domain.model.Role;
 import com.isep.acme.domain.model.User;
-import com.isep.acme.domain.repositories.UserRepository;
+import com.isep.acme.domain.repository.UserRepository;
 
 @Component
 @Profile("bootstrap")

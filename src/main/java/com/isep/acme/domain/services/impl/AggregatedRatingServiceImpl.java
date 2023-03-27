@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.isep.acme.domain.model.AggregatedRating;
 import com.isep.acme.domain.model.Product;
-import com.isep.acme.domain.repositories.AggregatedRatingRepository;
-import com.isep.acme.domain.repositories.ProductRepository;
+import com.isep.acme.domain.repository.AggregatedRatingRepository;
+import com.isep.acme.domain.repository.ProductRepository;
 import com.isep.acme.domain.services.AggregatedRatingService;
 import com.isep.acme.domain.services.ProductService;
 import com.isep.acme.domain.services.ReviewService;
