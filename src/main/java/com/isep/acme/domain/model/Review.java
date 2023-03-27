@@ -44,7 +44,7 @@ public class Review {
     private String report;
 
     @NotNull
-    private LocalDate publishingDate;
+    private LocalDate publishingDate = LocalDate.now();
 
     @NotNull
     private String funFact;

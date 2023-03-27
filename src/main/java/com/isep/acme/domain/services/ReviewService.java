@@ -3,17 +3,17 @@ package com.isep.acme.domain.services;
 import java.util.List;
 
 import com.isep.acme.domain.model.*;
-import com.isep.acme.dto.CreateReviewDTO;
-import com.isep.acme.dto.ReviewDTO;
 import com.isep.acme.dto.VoteReviewDTO;
+import com.isep.acme.dto.request.ReviewRequest;
+import com.isep.acme.dto.response.ReviewResponse;
 
 public interface ReviewService {
 
     Iterable<Review> getAll();
 
-    List<ReviewDTO> getReviewsOfProduct(String sku, String status);
+    List<ReviewResponse> getReviewsOfProduct(String sku, ApprovalStatus approvalStatus);
 
-    ReviewDTO create(CreateReviewDTO createReviewDTO, String sku);
+    Review create(Review review, String sku);
 
     boolean addVoteToReview(Long reviewID, VoteReviewDTO voteReviewDTO);
 
@@ -21,9 +21,9 @@ public interface ReviewService {
 
     Boolean DeleteReview(Long reviewId);
 
-    List<ReviewDTO> findPendingReview();
+    List<ReviewResponse> findPendingReview();
 
-    ReviewDTO moderateReview(Long reviewID, ApprovalStatus approvalStatus);
+    ReviewResponse moderateReview(Long reviewID, ApprovalStatus approvalStatus);
 
-    List<ReviewDTO> findReviewsByUser(Long userID);
+    List<ReviewResponse> findReviewsByUser(Long userID);
 }
