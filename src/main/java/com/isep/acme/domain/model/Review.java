@@ -24,7 +24,7 @@ public class Review {
     private long version;
 
     @NotNull
-    private String approvalStatus;
+    private ApprovalStatus approvalStatus = ApprovalStatus.PENDING;
 
     @NotNull(message = "Review Text is a mandatory attribute of Review.")
     @Size(max = 2048, message = "Review Text must not be greater than 2048 characters.")
@@ -65,34 +65,27 @@ public class Review {
         setReviewText(reviewText);
         setProduct(product);
         setPublishingDate(publishingDate);
-        setApprovalStatus("pending");
         setFunFact(funFact);
         setRating(rating);
         setUser(user);
     }
 
-    public Boolean setApprovalStatus(String approvalStatus) {
-        
-        if(Arrays.asList("pending", "approved", "rejected").contains(approvalStatus.toLowerCase())){
-            this.approvalStatus = approvalStatus;
-            return true;
-        }
-
-        return false;
+    public void setApprovalStatus(ApprovalStatus approvalStatus) {
+        this.approvalStatus = approvalStatus;        
     }
 
     public boolean addUpVote(Vote upVote) {
 
-        if(!approvalStatus.equals("approved")){
+        if(!approvalStatus.equals(ApprovalStatus.APPROVED)){
             return false;
         }
         upVotes.add(upVote);
         return true;
     }
-
+    
     public boolean addDownVote(Vote downVote) {
-
-        if(!approvalStatus.equals("approved")){
+        
+        if(!approvalStatus.equals(ApprovalStatus.APPROVED)){
             return false;
         }
 

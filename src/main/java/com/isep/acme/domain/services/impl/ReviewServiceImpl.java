@@ -87,11 +87,11 @@ public class ReviewServiceImpl implements ReviewService {
         Optional<Product> product = pRepository.findBySku(sku);
         if( product.isEmpty() ) return null;
 
-        Optional<List<Review>> r = repository.findByProductIdStatus(product.get(), status);
+        List<Review> r = repository.findByProductIdStatus(product.get(), status);
 
         if (r.isEmpty()) return null;
 
-        return ReviewMapper.toDtoList(r.get());
+        return ReviewMapper.toDtoList(r);
     }
 
     @Override
@@ -121,13 +121,13 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public Double getWeightedAverage(Product product){
 
-        Optional<List<Review>> r = repository.findByProductId(product);
+        List<Review> r = repository.findByProductId(product);
 
         if (r.isEmpty()) return 0.0;
 
         double sum = 0;
 
-        for (Review rev: r.get()) {
+        for (Review rev: r) {
             Rating rate = rev.getRating();
 
             if (rate != null){
@@ -135,7 +135,7 @@ public class ReviewServiceImpl implements ReviewService {
             }
         }
 
-        return sum/r.get().size();
+        return sum/r.size();
     }
 
     @Override
@@ -158,17 +158,17 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewDTO> findPendingReview(){
 
-        Optional<List<Review>> r = repository.findPendingReviews();
+        List<Review> r = repository.findPendingReviews();
 
         if(r.isEmpty()){
             return null;
         }
 
-        return ReviewMapper.toDtoList(r.get());
+        return ReviewMapper.toDtoList(r);
     }
 
     @Override
-    public ReviewDTO moderateReview(Long reviewID, String approved) throws ResourceNotFoundException, IllegalArgumentException {
+    public ReviewDTO moderateReview(Long reviewID, ApprovalStatus approvalStatus) throws ResourceNotFoundException, IllegalArgumentException {
 
         Optional<Review> r = repository.findById(reviewID);
 
@@ -176,11 +176,7 @@ public class ReviewServiceImpl implements ReviewService {
             throw new ResourceNotFoundException("Review not found");
         }
 
-        Boolean ap = r.get().setApprovalStatus(approved);
-
-        if(!ap) {
-            throw new IllegalArgumentException("Invalid status value");
-        }
+        r.get().setApprovalStatus(approvalStatus);
 
         Review review = repository.save(r.get());
 
@@ -195,10 +191,10 @@ public class ReviewServiceImpl implements ReviewService {
 
         if(user.isEmpty()) return null;
 
-        Optional<List<Review>> r = repository.findByUserId(user.get());
+        List<Review> r = repository.findByUserId(user.get());
 
         if (r.isEmpty()) return null;
 
-        return ReviewMapper.toDtoList(r.get());
+        return ReviewMapper.toDtoList(r);
     }
 }

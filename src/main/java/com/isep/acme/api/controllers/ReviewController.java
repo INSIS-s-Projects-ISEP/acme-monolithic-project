@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.isep.acme.domain.model.ApprovalStatus;
 import com.isep.acme.domain.services.ReviewService;
 import com.isep.acme.dto.CreateReviewDTO;
 import com.isep.acme.dto.ReviewDTO;
@@ -97,10 +98,10 @@ class ReviewController {
 
     @Operation(summary = "Accept or reject review")
     @PutMapping("/reviews/acceptreject/{reviewID}")
-    public ResponseEntity<ReviewDTO> putAcceptRejectReview(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody String approved){
+    public ResponseEntity<ReviewDTO> putAcceptRejectReview(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody ApprovalStatus approvalStatus){
 
         try {
-            ReviewDTO rev = rService.moderateReview(reviewID, approved);
+            ReviewDTO rev = rService.moderateReview(reviewID, approvalStatus);
 
             return ResponseEntity.ok().body(rev);
         }
