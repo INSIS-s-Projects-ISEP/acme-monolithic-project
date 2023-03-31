@@ -21,7 +21,7 @@ public class ReviewMapper {
 
     public ReviewResponse toResponse(Review review){
         return new ReviewResponse(
-            review.getIdReview(),
+            review.getReviewId(),
             review.getReviewText(),
             review.getPublishingDate(),
             review.getApprovalStatus(),

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.isep.acme.domain.model.ApprovalStatus;
 import com.isep.acme.domain.model.Review;
+import com.isep.acme.domain.model.enumerate.ApprovalStatus;
 import com.isep.acme.domain.services.ReviewService;
 import com.isep.acme.dto.VoteReviewDTO;
 import com.isep.acme.dto.mapper.ReviewMapper;

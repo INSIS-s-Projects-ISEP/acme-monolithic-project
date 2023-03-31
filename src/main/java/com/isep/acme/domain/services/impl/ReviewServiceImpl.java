@@ -6,11 +6,11 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.isep.acme.api.controllers.ResourceNotFoundException;
-import com.isep.acme.domain.model.ApprovalStatus;
 import com.isep.acme.domain.model.Product;
 import com.isep.acme.domain.model.Review;
 import com.isep.acme.domain.model.User;
 import com.isep.acme.domain.model.Vote;
+import com.isep.acme.domain.model.enumerate.ApprovalStatus;
 import com.isep.acme.domain.repository.ProductRepository;
 import com.isep.acme.domain.repository.ReviewRepository;
 import com.isep.acme.domain.repository.UserRepository;

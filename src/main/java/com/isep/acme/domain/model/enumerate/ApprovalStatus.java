@@ -1,4 +1,4 @@
-package com.isep.acme.domain.model;
+package com.isep.acme.domain.model.enumerate;
 
 public enum ApprovalStatus {
 

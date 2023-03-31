@@ -3,6 +3,7 @@ package com.isep.acme.domain.services;
 import java.util.List;
 
 import com.isep.acme.domain.model.*;
+import com.isep.acme.domain.model.enumerate.ApprovalStatus;
 import com.isep.acme.dto.VoteReviewDTO;
 import com.isep.acme.dto.request.ReviewRequest;
 import com.isep.acme.dto.response.ReviewResponse;

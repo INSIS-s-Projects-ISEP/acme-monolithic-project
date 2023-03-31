@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.isep.acme.domain.model.ApprovalStatus;
 import com.isep.acme.domain.model.Product;
 import com.isep.acme.domain.model.Review;
 import com.isep.acme.domain.model.User;
+import com.isep.acme.domain.model.enumerate.ApprovalStatus;
 
 public interface ReviewRepository extends CrudRepository<Review, Long> {
 
