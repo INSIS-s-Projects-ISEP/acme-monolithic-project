@@ -2,29 +2,29 @@ package com.isep.acme.domain.services;
 
 import java.util.List;
 
-import com.isep.acme.domain.model.*;
+import com.isep.acme.domain.model.Product;
+import com.isep.acme.domain.model.Review;
+import com.isep.acme.domain.model.Vote;
 import com.isep.acme.domain.model.enumerate.ApprovalStatus;
-import com.isep.acme.dto.VoteReviewDTO;
-import com.isep.acme.dto.request.ReviewRequest;
-import com.isep.acme.dto.response.ReviewResponse;
 
 public interface ReviewService {
 
     Iterable<Review> getAll();
 
-    List<ReviewResponse> getReviewsOfProduct(String sku, ApprovalStatus approvalStatus);
+    List<Review> getReviewsOfProduct(String sku, ApprovalStatus approvalStatus);
 
-    Review create(Review review, String sku);
+    Review create(Review review);
 
-    boolean addVoteToReview(Long reviewID, VoteReviewDTO voteReviewDTO);
+    void addVoteToReview(Review review, Vote vote);
 
     Double getWeightedAverage(Product product);
 
-    Boolean DeleteReview(Long reviewId);
+    void deleteReview(Review review);
 
-    List<ReviewResponse> findPendingReview();
+    List<Review> findPendingReview();
 
-    ReviewResponse moderateReview(Long reviewID, ApprovalStatus approvalStatus);
+    Review moderateReview(Review review, ApprovalStatus approvalStatus);
 
-    List<ReviewResponse> findReviewsByUser(Long userID);
+    List<Review> findReviewsByUser(String user);
+
 }

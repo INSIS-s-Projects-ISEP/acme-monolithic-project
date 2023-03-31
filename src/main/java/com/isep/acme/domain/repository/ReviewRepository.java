@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.isep.acme.domain.model.Product;
 import com.isep.acme.domain.model.Review;
-import com.isep.acme.domain.model.User;
 import com.isep.acme.domain.model.enumerate.ApprovalStatus;
 
 public interface ReviewRepository extends CrudRepository<Review, Long> {
@@ -25,6 +24,6 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
     List<Review> findByProductIdStatus(Product product, ApprovalStatus approvalStatus);
 
     @Query("SELECT r FROM Review r WHERE r.user=:user ORDER BY r.publishingDate DESC")
-    List<Review> findByUserId(User user);
+    List<Review> findByUserId(String user);
 
 }
